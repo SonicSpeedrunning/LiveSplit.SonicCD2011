@@ -1,7 +1,8 @@
 state("soniccd") {}
-state("RSDKv3_64") {}
 state("RSDKv3") {}
+state("RSDKv3_64") {}
 state("RSDKv3_HW") {}
+state("RSDKv3_HW_64") {}
 state("Sonic CD") {}
 state("Sonic CD_64") {}
 
@@ -261,5 +262,5 @@ reset
 
 isLoading
 {
-	return settings["RTA-TB"] ? vars.Func.IsInTimeBonus() : true;
+    return settings["RTA-TB"] ? vars.Func.IsInTimeBonus() : true;
 }
