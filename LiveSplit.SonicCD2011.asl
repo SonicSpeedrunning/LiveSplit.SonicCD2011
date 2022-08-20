@@ -84,7 +84,7 @@ init
 
                 ptr = scanner.Scan(new SigScanTarget(16, "81 F9 ???????? 0F 87 ???????? 41 8B 8C") { OnFound = (p, s, addr) => modules.First().BaseAddress + p.ReadValue<int>(addr) });
                 checkptr(ptr);
-                lea = scanner.Scan(new SigScanTarget(6, "8D 77 01 48 8D") { OnFound = (p, s, addr) => addr + p.ReadValue<int>(addr) + 0x4 });
+                lea = scanner.Scan(new SigScanTarget(3, "48 8D 05 ???????? 49 63 F8 4C") { OnFound = (p, s, addr) => addr + 0x4 + p.ReadValue<int>(addr) });
                 checkptr(lea);
                 vars.watchers.Add(new MemoryWatcher<bool>(pointerPath(0x4 * 11,  7, 0x1AC,  true )) { Name = "DemoMode" });
                 vars.watchers.Add(new MemoryWatcher<byte>(pointerPath(0x4 * 0,   0, 0x10B2, false)) { Name = "State" });
